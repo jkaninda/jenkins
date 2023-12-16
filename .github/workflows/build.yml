@@ -4,6 +4,13 @@ on:
     branches: [ "main" ]
   schedule:
       - cron: "0 0 * * 0"
+  workflow_dispatch:
+      inputs:
+        docker_tag:
+          description: 'Docker tag'
+          required: true
+          default: 'latest' 
+          type: string
 env:
   BUILDKIT_IMAGE: jkaninda/jenkins
 jobs:
