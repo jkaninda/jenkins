@@ -5,12 +5,14 @@ Jenkins with docker client
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/jkaninda/jenkins?style=flat-square)
 ![Docker Pulls](https://img.shields.io/docker/pulls/jkaninda/jenkins?style=flat-square)
 
+- [Docker Hub](https://hub.docker.com/r/jkaninda/jenkins)
+- [Github](https://github.com/jkaninda/jenkins)
 
 ## Tools:
 - docker client
 - jq
 - k6
-
+## Docker compose file :
 ```yaml
 version: '3.7'
 services:
