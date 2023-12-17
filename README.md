@@ -26,9 +26,38 @@ services:
     volumes:
       - ./data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.ssh/:/root/.ssh
 ```
 ## Run 
 ```sh
 docker compose up -d
+```
+
+```yaml
+version: '3.7'
+services:
+  jenkins:
+    image: jkaninda/jenkins:lts
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+         condition: on-failure
+      placement:
+        constraints: 
+          - node.role == manager
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sS http://localhost:8080/login || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+volumes:
+  data:
+
 ```
