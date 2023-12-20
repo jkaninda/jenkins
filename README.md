@@ -10,6 +10,8 @@ Jenkins with docker client
 
 ## Tools:
 - docker client
+- helm
+- kustomize
 - jq
 - k6
 ## Docker compose file :
